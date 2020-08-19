@@ -11,8 +11,9 @@ class Plant(models.Model):
         return self.name
 
 class User(models.Model):
-    name = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=100)
     plants = models.ManyToManyField(Plant, related_name='plants')
 
     def __str__(self):
-        return self.name
+        return self.username
