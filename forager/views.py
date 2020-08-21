@@ -15,9 +15,11 @@ class PlantView(viewsets.ModelViewSet):
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializerWithToken
+    permission_classes = (permissions.AllowAny,)
 
 @api_view(['GET'])
 def current_user(request):
+    permission_classes = (permissions.AllowAny,)
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
